@@ -39,12 +39,12 @@
         'type': 'fill',
         'source': {
           'type': 'geojson',
-          'data': 'hongkong.geojson'
+          'data': 'lacounty.geojson'
         },
         'paint': {
           'fill-color': [
             "step",
-            ["get", "DN"],
+            ["get", "t19851992"],
             'rgba(255, 255, 255, 0.1)',
             1,
             'rgba(140, 0, 0, 0.3)',
@@ -96,7 +96,7 @@
       map.on('click', 'hongkong', function (e) {
         new mapboxgl.Popup()
           .setLngLat(e.lngLat)
-          .setHTML(e.features[0].properties.DN)
+          .setHTML(e.features[0].properties.t19851992)
           .addTo(map);
       });
 
