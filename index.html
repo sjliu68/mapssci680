@@ -129,27 +129,18 @@ if (err) {
 throw err;
 }
  
-                map.addSource('points', {
+                map.addSource('data', {
                     'type': 'geojson',
                     'data': 'https://sjliu.me/mapssci680/lacounty.geojson'
                 });
                 map.addLayer({
-                    'id': 'points',
+                    'id': 'data',
                     'type': 'Polygon',
-                    'source': 'points',
+                    'source': 'data',
                 });
             });
 
  
-// Set filter to first month of the year
-// 0 = January
-filterBy(0);
- 
-document.getElementById('slider').addEventListener('input', (e) => {
-const month = parseInt(e.target.value, 10);
-filterBy(month);
-});
-}
 </script>
  
 </body>
