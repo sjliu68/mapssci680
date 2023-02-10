@@ -129,58 +129,17 @@ if (err) {
 throw err;
 }
  
-// Create a month property value based on time
-// used to filter against.
-data.features = data.features.map((d) => {
-d.properties.month = new Date(d.properties.time).getMonth();
-return d;
-});
- 
-map.addSource('earthquakes', {
-'type': 'geojson',
-data: data
-});
- 
-map.addLayer({
-'id': 'earthquake-circles',
-'type': 'circle',
-'source': 'earthquakes',
-'paint': {
-'circle-color': [
-'interpolate',
-['linear'],
-['get', 'mag'],
-6,
-'#FCA107',
-8,
-'#7F3121'
-],
-'circle-opacity': 0.75,
-'circle-radius': [
-'interpolate',
-['linear'],
-['get', 'mag'],
-6,
-20,
-8,
-40
-]
-}
-});
- 
-map.addLayer({
-'id': 'earthquake-labels',
-'type': 'symbol',
-'source': 'earthquakes',
-'layout': {
-'text-field': ['concat', ['to-string', ['get', 'mag']], 'm'],
-'text-font': ['Open Sans Bold', 'Arial Unicode MS Bold'],
-'text-size': 12
-},
-'paint': {
-'text-color': 'rgba(0,0,0,0.5)'
-}
-});
+                map.addSource('points', {
+                    'type': 'geojson',
+                    'data': 'https://sjliu.me/mapssci680/lacounty.geojson'
+                });
+                map.addLayer({
+                    'id': 'points',
+                    'type': 'Polygon',
+                    'source': 'points',
+                });
+            });
+
  
 // Set filter to first month of the year
 // 0 = January
